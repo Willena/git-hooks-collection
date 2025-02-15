@@ -1,0 +1,8 @@
+feat(regular-expression_conventionalCommitsỦniçode)!: Subject-3302 úniçode samlpe #33 [BIAG-99]
+
+Validating everything for best conventionalCommits usage
+thanks
+Éverything is Ủniçode now
+
+BREAKING CHANGE: breaking change description
+Footer: footer
