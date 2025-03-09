@@ -1,5 +1,7 @@
 package io.github.willena.maven.plugins.githooks;
 
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.regex.Matcher;
@@ -9,6 +11,8 @@ import java.util.regex.Pattern;
  * Check if commit message follows the conventional commit format.
  * Applicability: commit-msg
  */
+@Named("CommitFollowConventional")
+@Singleton
 public class CommitFollowConventional implements RunnableGitHook {
 
     // Adapted from https://regex101.com/r/vcxVpP/5

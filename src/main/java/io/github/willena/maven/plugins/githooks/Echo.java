@@ -1,13 +1,19 @@
 package io.github.willena.maven.plugins.githooks;
 
 import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.project.MavenProject;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.util.Arrays;
 
 /**
  * Hook that prints its inputs
  * Applicability: any hooks
  */
+@Named("Echo")
+@Singleton
 public class Echo implements RunnableGitHook {
 
     private void log(Log log, String message) {
