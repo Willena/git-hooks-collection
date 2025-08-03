@@ -4,7 +4,7 @@ Collection of Git Hooks meant to be used with the [GitHooks Maven plugin](https:
 
 ## Setup
 
-Add the following dependency to your githook maven plugin definition
+Add the following dependency to your githook-maven-plugin definition
 
 ```xml
 <dependencies>
@@ -22,7 +22,7 @@ Add the following dependency to your githook maven plugin definition
 
 ### Echo
 
-**ClassName**: io.github.willena.maven.plugins.githooks.Echo
+**ClassName**: `Print` or `io.github.willena.maven.plugins.githooks.Print`
 
 **Preferred git hook**: any
 
@@ -31,17 +31,18 @@ Add the following dependency to your githook maven plugin definition
 **Usage**:
 
 ```xml
+
 <hookDefinition>
     <name>name</name>
     <runConfig>
-        <className>io.github.willena.maven.plugins.githooks.Echo</className>
+        <className>Print</className>
     </runConfig>
 </hookDefinition>
 ```
 
 ### CommitFollowConventional
 
-**ClassName**: io.github.willena.maven.plugins.githooks.CommitFollowConventional
+**ClassName**: `CommitFollowConventional` or `io.github.willena.maven.plugins.githooks.CommitFollowConventional`
 
 **Preferred git hook**: COMMIT_MSG
 
@@ -53,14 +54,14 @@ Add the following dependency to your githook maven plugin definition
 <hookDefinition>
     <name>name</name>
     <runConfig>
-        <className>io.github.willena.maven.plugins.githooks.CommitFollowConventional</className>
+        <className>CommitFollowConventional</className>
     </runConfig>
 </hookDefinition>
 ```
 
 ### CommitReferenceIssue
 
-**ClassName**: io.github.willena.maven.plugins.githooks.CommitReferenceIssue
+**ClassName**: `CommitReferenceIssue` or `io.github.willena.maven.plugins.githooks.CommitReferenceIssue`
 
 **Preferred git hook**: COMMIT_MSG
 
@@ -72,14 +73,15 @@ Add the following dependency to your githook maven plugin definition
 <hookDefinition>
     <name>name</name>
     <runConfig>
-        <className>io.github.willena.maven.plugins.githooks.CommitReferenceIssue</className>
+        <className>CommitReferenceIssue</className>
     </runConfig>
 </hookDefinition>
 ```
 
-## Full GitHook plugin example
+## Complete example
 
 ```xml
+
 <plugin>
     <groupId>io.github.willena.maven.plugins</groupId>
     <artifactId>githooks-maven-plugin</artifactId>
@@ -103,19 +105,19 @@ Add the following dependency to your githook maven plugin definition
                         <enabled>false</enabled>
                         <name>echo</name>
                         <runConfig>
-                            <className>io.github.willena.maven.plugins.githooks.Echo</className>
+                            <className>Print</className>
                         </runConfig>
                     </hookDefinition>
                     <hookDefinition>
                         <name>conventional-commit</name>
                         <runConfig>
-                            <className>io.github.willena.maven.plugins.githooks.CommitFollowConventional</className>
+                            <className>CommitFollowConventional</className>
                         </runConfig>
                     </hookDefinition>
                     <hookDefinition>
                         <name>reference-issue</name>
                         <runConfig>
-                            <className>io.github.willena.maven.plugins.githooks.CommitReferenceIssue</className>
+                            <className>CommitReferenceIssue</className>
                         </runConfig>
                     </hookDefinition>
                 </hookDefinitions>

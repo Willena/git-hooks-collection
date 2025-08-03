@@ -1,9 +1,10 @@
 package io.github.willena.maven.plugins.githooks;
 
 import org.apache.maven.plugin.logging.Log;
-import org.apache.maven.project.MavenProject;
+import org.eclipse.sisu.Description;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import java.util.Arrays;
@@ -12,15 +13,18 @@ import java.util.Arrays;
  * Hook that prints its inputs
  * Applicability: any hooks
  */
-@Named("Echo")
 @Singleton
-public class Echo implements RunnableGitHook {
+@Named("Print")
+@Description("Hook that prints its inputs")
+public class Print implements RunnableGitHook {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Print.class);
 
     private void log(Log log, String message) {
         if (log != null) {
             log.info(message);
         } else {
-            System.out.println("INFO: " + message);
+            LOGGER.info(message);
         }
     }
 
@@ -32,9 +36,9 @@ public class Echo implements RunnableGitHook {
         log(context.getLogger(), "Hook arguments: " + Arrays.toString(args));
 
         log(context.getLogger(), "Environment");
-        System.getenv().entrySet().forEach(e -> log(context.getLogger(), e.getKey() + ": " + e.getValue()));
+        System.getenv().forEach((key, value) -> log(context.getLogger(), key + ": " + value));
 
         log(context.getLogger(), "Properties");
-        System.getProperties().entrySet().forEach(e -> log(context.getLogger(), e.getKey() + ": " + e.getValue()));
+        System.getProperties().forEach((key, value) -> log(context.getLogger(), key + ": " + value));
     }
 }

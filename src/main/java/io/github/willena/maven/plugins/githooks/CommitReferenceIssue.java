@@ -1,5 +1,7 @@
 package io.github.willena.maven.plugins.githooks;
 
+import org.eclipse.sisu.Description;
+
 import javax.inject.Named;
 import javax.inject.Singleton;
 import java.nio.file.Files;
@@ -11,8 +13,9 @@ import java.util.regex.Pattern;
  * Check if commit message contains an issue reference.
  * Applicability: commit-msg
  */
-@Named("CommitReferenceIssue")
 @Singleton
+@Named("CommitReferenceIssue")
+@Description("Check if commit message contains an issue reference.")
 public class CommitReferenceIssue implements RunnableGitHook {
     private static final Pattern ISSUE_REFERENCE_PATTERN = Pattern.compile("(?<jiraLike>\\b[A-Za-z][A-Za-z0-9_]+-[1-9][0-9]*)|(?<issueId>#\\d+)", Pattern.MULTILINE | Pattern.UNICODE_CHARACTER_CLASS);
 

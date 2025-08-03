@@ -4,13 +4,11 @@ import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.project.MavenProject;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
-
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EchoTest {
+class PrintTest {
 
     private class FakeLog implements Log {
 
@@ -99,8 +97,8 @@ class EchoTest {
     void shouldNotFail() {
         FakeLog fakeLog = new FakeLog();
         HookContext ctx = new HookContext(new MavenProject(), null, fakeLog);
-        Echo echoHook = new Echo();
-        assertDoesNotThrow(() -> echoHook.run(ctx, new String[]{"abc"}));
+        Print printHook = new Print();
+        assertDoesNotThrow(() -> printHook.run(ctx, new String[]{"abc"}));
 
         assertTrue(fakeLog.messages.size() > 4);
     }
